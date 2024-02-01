@@ -19,16 +19,6 @@ class MemoryDBAclStack(Stack):
     super().__init__(scope, construct_id, **kwargs)
 
     MEMORYDB_USER_NAME = self.node.try_get_context('memorydb_user_name') or 'vectordb-admin'
-    # MEMORYDB_USER_NAME = cdk.CfnParameter(self, 'MemoryDBUserName',
-    #   type='String',
-    #   description='memory db user name',
-    #   default='memdb-admin'
-    # )
-
-    # MEMORYDB_USER_PASSWORD = cdk.CfnParameter(self, 'MemoryDBUserPassword',
-    #   type='String',
-    #   description='memory db user password (16~128 printable characters)'
-    # )
 
     memorydb_secret = aws_secretsmanager.Secret(self, 'MemoryDBSecret',
       generate_secret_string=aws_secretsmanager.SecretStringGenerator(
