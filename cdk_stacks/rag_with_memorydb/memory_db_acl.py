@@ -18,7 +18,7 @@ class MemoryDBAclStack(Stack):
   def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
     super().__init__(scope, construct_id, **kwargs)
 
-    MEMORYDB_USER_NAME = self.node.try_get_context('memorydb_user_name') or 'vectordb-admin'
+    MEMORYDB_USER_NAME = self.node.try_get_context('memorydb_user_name') or 'memdb-admin'
 
     memorydb_secret = aws_secretsmanager.Secret(self, 'MemoryDBSecret',
       generate_secret_string=aws_secretsmanager.SecretStringGenerator(
